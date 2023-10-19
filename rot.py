@@ -21,15 +21,19 @@ def generate_data(n):
         #     rotation_axis_z *= -1
         rotation_axis = np.array([rotation_axis_x, rotation_axis_y, rotation_axis_z])
         rotation_axis /= np.linalg.norm(rotation_axis)
-        rotation_theta = np.random.uniform(0.1, 0.25, 1)
+
+        theta_dir = 1
         if bool(random.randint(0, 1)):
-            rotation_theta *= -1
+            theta_dir *= -1
+        rotation_theta = np.random.uniform(0.1, 0.25, 1)
+        rotation_theta *= theta_dir
         # num_steps = random.randint(3, 4)
-        num_steps = 1
+        num_steps = 10
         # Point of Interest (end effector position relative to joint)
         point = np.random.uniform(-1, 1, 3)
 
         for _ in range(num_steps):
+            
 
             # Create small variations in state variables
             # axial_shift = np.random.uniform(-0.01, 0.01, 3)
